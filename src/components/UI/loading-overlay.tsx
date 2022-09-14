@@ -1,5 +1,6 @@
 import React from 'react'
-import { ClipLoader } from 'react-spinners'
+import Lottie from 'lottie-react'
+import LoadingAnimation from '@assets/loading.json'
 
 interface Props {
   isLoading: boolean
@@ -22,16 +23,19 @@ const LoadingOverlay = ({ isLoading }: Props) => {
     >
       <div
         style={{
-          width: 100,
-          height: 100,
+          width: 300,
+          height: 250,
           backgroundColor: 'white',
           borderRadius: 8,
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center'
         }}
       >
-        <ClipLoader color="#36d7b7" loading size={50} speedMultiplier={1} />
+        {/* <ClipLoader color="#36d7b7" loading size={50} speedMultiplier={1} /> */}
+        <Lottie animationData={LoadingAnimation} loop={true} />
+        GİRİŞ YAPILIYOR…
       </div>
     </div>
   )

@@ -1,37 +1,26 @@
-import { Button } from 'antd'
 import React from 'react'
-import styled from 'styled-components'
-import Logo from '../assets/logo.svg'
-
-const HeaderWrapper = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`
-
-const ButtonText = styled.span`
-  width: 64px;
-  height: 18px;
-  font-family: SofiaPro;
-  font-size: 14px;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: 0.6px;
-  text-align: center;
-  color: #17171a;
-`
+import Logo from '@assets/logo.svg'
+import UserCard from './UI/user-card'
 
 const Header = () => {
   return (
-    <HeaderWrapper>
+    <div className="flex justify-between items-center">
       <img src={Logo} alt="" />
-      <Button size="large" style={{ borderRadius: 12 }}>
-        {/* <ButtonText>KAYIT OL</ButtonText> */}
-        KAYIT OL
-      </Button>
-    </HeaderWrapper>
+      <div className="flex justify-between">
+        <div>Hesaplar</div>
+        <div>Kartlar</div>
+        <div>İşlemler</div>
+        <div>Kampanyalar</div>
+      </div>
+      <div>
+        <UserCard
+          name="Deniz Aksu"
+          role="Admin"
+          avatar=""
+          notificationCount={8}
+        />
+      </div>
+    </div>
   )
 }
 
