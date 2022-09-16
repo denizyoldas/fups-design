@@ -7,5 +7,6 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   esbuild: {
     logOverride: { 'this-is-undefined-in-esm': 'silent' }
-  }
+  },
+  optimizeDeps: { exclude: ['swiper', 'swiper/react', 'swiper/types'] }
 })

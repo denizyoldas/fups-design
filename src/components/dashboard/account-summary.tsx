@@ -1,6 +1,7 @@
 import React from 'react'
 import AccountSummaryItem from './account-summary-item'
 import { nanoid } from 'nanoid'
+import Title from '../UI/title'
 
 const SUMMARY: any[] = [
   {
@@ -37,11 +38,19 @@ const SUMMARY: any[] = [
 
 const AccountSummary = () => {
   return (
-    <div className="bg-white h-80 rounded-xl">
-      {SUMMARY.map(item => (
-        <AccountSummaryItem {...item} key={item.id} />
-      ))}
-    </div>
+    <>
+      <div className="flex justify-between items-center mb-6">
+        <Title>Hesap Hareketleri</Title>
+        <a className="text-soft-blue text-sm font-semibold tracking-[0.2px]">
+          Harcama Analizi
+        </a>
+      </div>
+      <div className="bg-white h-80 rounded-xl">
+        {SUMMARY.map(item => (
+          <AccountSummaryItem {...item} key={item.id} />
+        ))}
+      </div>
+    </>
   )
 }
 

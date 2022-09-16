@@ -20,7 +20,7 @@ const Button = ({
         'px-5 py-2 rounded-md text-sm font-semibold tracking-[1px]',
         {
           'border-2 border-secondary': variant === 'outline',
-          'bg-[#155ed4] text-white': variant === 'primary',
+          'bg-soft-blue text-white': variant === 'primary',
           'bg-transparent text-primary': variant === 'tertiary'
         },
         className
