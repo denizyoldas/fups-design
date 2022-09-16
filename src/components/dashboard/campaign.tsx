@@ -55,7 +55,7 @@ const Campaign = () => {
 
   return (
     <>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center mb-6">
         <Title>SİZE ÖZEL KAMPANYALAR</Title>
         <div>
           <button className="text-gray-500 mr-2 cursor-pointer" id="prev-btn">
@@ -94,8 +94,6 @@ const Campaign = () => {
       </div>
       <Swiper
         modules={[Pagination, Navigation]}
-        spaceBetween={16}
-        slidesPerView={4}
         pagination={{
           clickable: true
         }}
@@ -105,7 +103,21 @@ const Campaign = () => {
             prevEl: '#prev-btn'
           } as any
         }
-        className="-mr-10"
+        breakpoints={{
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 14
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 16
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 18
+          }
+        }}
+        className="mr-0 sm:-mr-10"
       >
         {CAMPS.map(c => (
           <SwiperSlide key={c.id} className="mb-12 !w-auto">

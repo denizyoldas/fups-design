@@ -10,7 +10,7 @@ const Title = ({ children, className }: Props) => {
   return (
     <h2
       className={cx(
-        'mb-6 text-dark text-sm font-semibold tracking-[0.2px]',
+        'text-dark text-sm font-semibold tracking-[0.2px]',
         className
       )}
     >

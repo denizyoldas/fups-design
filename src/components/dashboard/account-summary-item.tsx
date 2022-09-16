@@ -38,7 +38,7 @@ const AccountSummaryItem = ({
   }
 
   return (
-    <div className="flex justify-between items-center p-6 border-b border-[#f0f0f5]">
+    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 sm:p-6 border-b border-[#f0f0f5]">
       <div className="flex items-center">
         <div className="relative">
           <img
@@ -61,7 +61,7 @@ const AccountSummaryItem = ({
           <div className="text-xs text-[#909099]">{description}</div>
         </div>
       </div>
-      <div className="text-sm flex flex-col items-end">
+      <div className="text-sm flex flex-row-reverse sm:flex-col justify-between items-start sm:items-end mt-4 sm:mt-0 w-full sm:w-auto">
         <Currency
           className={cx(
             'text-base font-semibold',
