@@ -2,8 +2,8 @@ import React from 'react'
 
 const Info = () => {
   return (
-    <div className="flex justify-between bg-white rounded-xl mt-16">
-      <div className="pl-10 pt-8 pb-6 w-[500px]">
+    <div className="flex flex-col-reverse sm:flex-row justify-between bg-white rounded-xl mt-16">
+      <div className="pl-10 pt-8 pb-6 max-w-[500px]">
         <h4 className="text-xl tracking-[0.6px] font-semibold text-dark mb-4">
           Sosyal hesaplar sizlerle!
         </h4>
@@ -15,7 +15,11 @@ const Info = () => {
           Hemen Satın Al
         </a>
       </div>
-      <img src="/image-custom-social-account@3x.webp" alt="" className="h-52" />
+      <img
+        src="/image-custom-social-account@3x.webp"
+        alt=""
+        className="max-h-52"
+      />
     </div>
   )
 }

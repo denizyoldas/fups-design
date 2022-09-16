@@ -56,10 +56,10 @@ const MENUS: IMenu[] = [
 
 const Header = () => {
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-center md:justify-between items-center">
       <div className="flex justify-between">
         <img src={Logo} alt="" />
-        <div className="ml-14 flex items-center gap-11">
+        <div className="ml-14 hidden md:flex items-center gap-11">
           {MENUS.map((menu, index) => (
             <div
               key={`menu-${menu.name}-${index}`}
@@ -85,7 +85,7 @@ const Header = () => {
           ))}
         </div>
       </div>
-      <div>
+      <div className="hidden md:block">
         <UserCard
           name="Deniz Aksu"
           role="Admin"
