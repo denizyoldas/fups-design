@@ -1,7 +1,8 @@
-import React from 'react'
 import AccountSummaryItem from './account-summary-item'
 import { nanoid } from 'nanoid'
 import Title from '../UI/title'
+import cx from 'classnames'
+import { useState } from 'react'
 
 const SUMMARY: any[] = [
   {
@@ -37,6 +38,8 @@ const SUMMARY: any[] = [
 ]
 
 const AccountSummary = () => {
+  const [active, setActive] = useState(0)
+
   return (
     <>
       <div className="flex justify-between items-center mb-6">
@@ -45,10 +48,29 @@ const AccountSummary = () => {
           Harcama Analizi
         </a>
       </div>
-      <div className="bg-white h-auto sm:h-80 rounded-xl">
+      <div className="bg-white h-auto rounded-xl">
         {SUMMARY.map(item => (
           <AccountSummaryItem {...item} key={item.id} />
         ))}
+
+        <div className="flex items-center justify-center py-6">
+          <ul className="grid grid-cols-4 gap-3">
+            {Array.from({ length: 4 }, (_, i) => (
+              <li
+                key={i}
+                className={cx(
+                  'bg-[#f0f0f5] text-[#909099] flex items-center justify-center w-8 h-8 rounded-md cursor-pointer',
+                  {
+                    '!bg-soft-blue !text-white': active === i
+                  }
+                )}
+                onClick={() => setActive(i)}
+              >
+                {i + 1}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </>
   )
