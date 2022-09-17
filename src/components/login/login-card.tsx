@@ -53,7 +53,7 @@ const LoginCard = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center w-full">
+      <div className="flex flex-col items-center justify-center w-full h-2/3">
         <div className="w-full sm:w-[500px]">
           <form onSubmit={handleSubmit(submitHandler)}>
             <h1 className="font-semibold text-3xl tracking-[0.56px]">
