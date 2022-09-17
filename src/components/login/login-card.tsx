@@ -67,16 +67,16 @@ const LoginCard = () => {
                 {...register('type')}
                 options={OPTIONS}
                 label="Hesap Tipi"
-                error={errors.type?.message}
+                error={errors.type?.message as string}
               />
               <Input
                 {...register('username', { required: 'required' })}
-                error={errors.username?.message}
+                error={errors.username?.message as string}
                 label="Kullanıcı Adı"
               />
               <Input
                 {...register('password', { required: 'required' })}
-                error={errors.password?.message}
+                error={errors.password?.message as string}
                 label="Şifre"
               />
             </div>

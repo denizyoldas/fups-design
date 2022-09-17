@@ -1,7 +1,7 @@
 import { IUser } from '@/types/user.model'
 import { atom, useAtom } from 'jotai'
 
-export const authAtom = atom(null)
+export const authAtom = atom<IUser | any>({})
 
 export const useAuthAtom = () => {
   const [state, setState] = useAtom(authAtom)
