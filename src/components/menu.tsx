@@ -1,4 +1,5 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 
 interface IMenu {
   icon: string
@@ -53,9 +54,36 @@ const MENUS: IMenu[] = [
 ]
 
 const Menu = () => {
+  const [menus, setMenus] = useState<IMenu[]>([])
+
+  // get random menu data
+  const getRandomMenu = async () => {
+    const res = await axios.get(
+      'https://random-data-api.com/api/v2/beers?size=5'
+    )
+    const menuList = res.data.map((item: any) => {
+      return {
+        icon: '',
+        name: item.hop,
+        link: '/accounts',
+        subMenu: res.data.map((subItem: any) => ({
+          icon: '',
+          name: item.hop,
+          link: '/accounts'
+        }))
+      }
+    })
+
+    setMenus(menuList)
+  }
+
+  useEffect(() => {
+    getRandomMenu()
+  }, [])
+
   return (
     <div className="ml-14 hidden md:flex items-center gap-11">
-      {MENUS.map((menu, index) => (
+      {menus.map((menu, index) => (
         <div
           key={`menu-${menu.name}-${index}`}
           className="relative hover:bg-soft-blue/5 p-3 rounded-xl group cursor-pointer"

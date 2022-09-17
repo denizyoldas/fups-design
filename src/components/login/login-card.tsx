@@ -5,6 +5,22 @@ import { useForm } from 'react-hook-form'
 import Button from '../UI/button'
 import Input from '../UI/input'
 import LoadingOverlay from '../UI/loading-overlay'
+import Select from '../UI/select'
+
+const OPTIONS = [
+  {
+    label: 'Standart Hesap',
+    value: 'standart'
+  },
+  {
+    label: 'Onaylı Hesap',
+    value: 'onayli'
+  },
+  {
+    label: 'Premium Hesap',
+    value: 'premium'
+  }
+]
 
 const LoginCard = () => {
   const { login } = useAuthAtom()
@@ -20,7 +36,9 @@ const LoginCard = () => {
     const user = await getRandomUser()
     setIsLoading(false)
 
-    login({ ...values, name: `${user.name.first} ${user.name.last}` })
+    console.log(values)
+
+    // login({ ...values, name: `${user.name.first} ${user.name.last}` })
   }
 
   // get random user data
@@ -35,8 +53,8 @@ const LoginCard = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center">
-        <div className="w-96">
+      <div className="flex flex-col items-center justify-center w-full">
+        <div className="w-full sm:w-[500px]">
           <form onSubmit={handleSubmit(submitHandler)}>
             <h1 className="font-semibold text-3xl tracking-[0.56px]">
               Kullanıcı Girişi
@@ -44,14 +62,29 @@ const LoginCard = () => {
             <span className="text-accent">
               Ad soyad ve şifren ile Fups hesabına giriş yapabilirsin.
             </span>
-            <div>
-              <Input {...register('email')} />
-              <Input {...register('password')} />
-              <Input {...register('type')} />
+            <div className="grid grid-cols-1 gap-6 mt-8">
+              <Select
+                {...register('type')}
+                options={OPTIONS}
+                label="Hesap Tipi"
+                error={errors.type?.message}
+              />
+              <Input
+                {...register('username', { required: 'required' })}
+                error={errors.username?.message}
+                label="Kullanıcı Adı"
+              />
+              <Input
+                {...register('password', { required: 'required' })}
+                error={errors.password?.message}
+                label="Şifre"
+              />
             </div>
-            <div className="flex justify-between">
+            <div className="flex items-center justify-between mt-6">
               <a href="#">Şifremi unuttum</a>
-              <Button type="submit">GİRİŞ YAP</Button>
+              <Button type="submit" className="py-5 px-12 !rounded-2xl">
+                GİRİŞ YAP
+              </Button>
             </div>
           </form>
         </div>
