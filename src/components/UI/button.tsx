@@ -4,6 +4,7 @@ import cx from 'classnames'
 interface Props {
   className?: string
   variant?: 'primary' | 'outline' | 'tertiary'
+  type?: 'button' | 'submit' | 'reset'
   children: React.ReactNode
   onClick?: () => void
 }
@@ -11,6 +12,7 @@ interface Props {
 const Button = ({
   className,
   variant = 'primary',
+  type = 'button',
   children,
   onClick
 }: Props) => {
@@ -25,6 +27,7 @@ const Button = ({
         },
         className
       )}
+      type={type}
       onClick={onClick}
     >
       {children}

@@ -18,7 +18,8 @@ const LoadingOverlay = ({ isLoading }: Props) => {
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
         display: isLoading ? 'flex' : 'none',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        zIndex: 999
       }}
     >
       <div
@@ -33,7 +34,6 @@ const LoadingOverlay = ({ isLoading }: Props) => {
           justifyContent: 'center'
         }}
       >
-        {/* <ClipLoader color="#36d7b7" loading size={50} speedMultiplier={1} /> */}
         <Lottie animationData={LoadingAnimation} loop={true} />
         GİRİŞ YAPILIYOR…
       </div>

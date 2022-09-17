@@ -1,7 +1,6 @@
 import React from 'react'
 import Header from '../components/login/header'
 import UserIcon from '../assets/image-register-01.svg'
-import LoadingOverlay from '../components/UI/loading-overlay'
 import HelpCard from '@components/login/help-card'
 import LoginCard from '@/components/login/login-card'
 
@@ -20,7 +19,6 @@ const Login = () => {
       <div className="absolute left-0 bottom-0">
         <img src={UserIcon} />
       </div>
-      {/* <LoadingOverlay isLoading={true} />  */}
     </div>
   )
 }

@@ -1,10 +1,12 @@
-import React from 'react'
 import Logo from '@assets/logo.svg'
 import UserCard from './UI/user-card'
 import Menu from './menu'
 import MobileMenu from './mobile-menu'
+import { useAuthAtom } from '@/store/auth-atom'
 
 const Header = () => {
+  const { state: user } = useAuthAtom()
+
   return (
     <>
       <div className="flex justify-center md:justify-between items-center">
@@ -14,8 +16,8 @@ const Header = () => {
         </div>
         <div className="hidden md:block">
           <UserCard
-            name="Deniz Aksu"
-            role="Admin"
+            name={user?.name}
+            role={user?.type}
             avatar="/user-image.webp"
             notificationCount={8}
           />
