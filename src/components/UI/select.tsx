@@ -50,6 +50,27 @@ const customStyles = {
   })
 }
 
+const CustomOption = ({
+  innerProps,
+  isDisabled,
+  label,
+  isSelected,
+  ...pp
+}: any) =>
+  !isDisabled ? (
+    <div
+      {...innerProps}
+      className="text-base text-accent p-5 border-b border-[#f5f5fa] flex items-center"
+    >
+      <input
+        type="radio"
+        defaultChecked={isSelected}
+        className="mr-4 checked:border-blue-400 w-5 h-5 appearance-none checked:border-[6px] rounded-full border-2 border-secondary cursor-pointer"
+      />
+      <label className="cursor-pointer">{label}</label>
+    </div>
+  ) : null
+
 const Select = React.forwardRef<any, Props>(
   ({ className, label, name, error, options, ...props }, ref) => {
     return (
@@ -62,8 +83,8 @@ const Select = React.forwardRef<any, Props>(
           styles={customStyles}
           placeholder={label}
           {...props}
+          components={{ Option: CustomOption }}
         />
-        {/* {error && <p className="text-sm text-error mt-2">{error}</p>} */}
       </div>
     )
   }
