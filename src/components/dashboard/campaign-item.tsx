@@ -11,7 +11,7 @@ interface Props {
 
 const CampaignItem = ({ id, title, description, image, link }: Props) => {
   return (
-    <div className="bg-white w-96 h-40 rounded-xl flex relative">
+    <div className="bg-white w-[310px] md:w-96 h-40 rounded-xl flex relative">
       <img src={image} alt={title} className="w-24 h-[170px] -mt-[10px]" />
       <div className="my-10 ml-2 mr-6">
         <h2 className="font-semibold text-sm tracking-[0.2px] mb-3">{title}</h2>

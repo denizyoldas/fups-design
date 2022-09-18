@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes } from 'react'
-import ReactSelect from 'react-select'
+import ReactSelect, { components } from 'react-select'
 
 interface Props {
   className?: string
@@ -12,8 +12,15 @@ interface Props {
 const customStyles = {
   option: (provided: any, state: any) => ({
     ...provided,
-    color: state.isSelected ? 'red' : 'blue',
-    padding: 20
+    // color: state.isSelected ? 'red' : 'blue',
+    color: '#606066',
+    backgroundColor: '#fff',
+    padding: 20,
+    cursor: 'pointer',
+    '&:hover': {
+      backgroundColor: '#fff',
+      color: '#000'
+    }
   }),
   control: (provided: any, state: any) => ({
     ...provided,
@@ -21,7 +28,10 @@ const customStyles = {
     border: 'none',
     backgroundColor: '#f5f5fa',
     height: 56,
-    padding: '0 16px'
+    padding: '0 16px',
+    '&:hover': {
+      border: '2px solid #dcdce6'
+    }
   }),
   dropdownIndicator: (provided: any, state: any) => ({
     ...provided,
@@ -30,6 +40,13 @@ const customStyles = {
   indicatorSeparator: (provided: any, state: any) => ({
     ...provided,
     display: 'none'
+  }),
+  menu: (provided: any, state: any) => ({
+    ...provided,
+    borderRadius: 12,
+    border: 'none',
+    boxShadow: '0 8px 24px 0 rgba(20, 20, 51, 0.15)',
+    marginTop: 8
   })
 }
 

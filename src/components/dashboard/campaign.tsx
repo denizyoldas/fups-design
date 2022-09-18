@@ -104,9 +104,13 @@ const Campaign = () => {
           } as any
         }
         breakpoints={{
+          390: {
+            slidesPerView: 1,
+            spaceBetween: 0
+          },
           640: {
             slidesPerView: 1,
-            spaceBetween: 14
+            spaceBetween: 10
           },
           768: {
             slidesPerView: 2,

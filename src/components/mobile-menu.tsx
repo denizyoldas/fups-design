@@ -1,65 +1,41 @@
 import React, { useState } from 'react'
 import cx from 'classnames'
+import { IMenu } from '@/types/menu.model'
+import styled from 'styled-components'
 
-interface IMenu {
-  icon: string
-  name: string
-  link: string
-  subMenu?: IMenu[]
+interface Props {
+  menus: IMenu[]
 }
 
-const MENUS: IMenu[] = [
-  {
-    icon: '',
-    name: 'Hesaplar',
-    link: '/accounts',
-    subMenu: [
-      {
-        icon: '',
-        name: 'Hesaplarım',
-        link: '/accounts'
-      },
-      {
-        icon: '',
-        name: 'Hesaplarım',
-        link: '/accounts'
-      },
-      {
-        icon: '',
-        name: 'Hesaplarım',
-        link: '/accounts'
-      },
-      {
-        icon: '',
-        name: 'Hesaplarım',
-        link: '/accounts'
-      }
-    ]
-  },
-  {
-    icon: '',
-    name: 'Kartlar',
-    link: '/cards'
-  },
-  {
-    icon: '',
-    name: 'İşlemler',
-    link: '/transactions'
-  },
-  {
-    icon: '',
-    name: 'Kampanyalar',
-    link: '/campaigns'
-  }
-]
+const HamubergerMenu = styled.button`
+  width: 32px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  overflow: hidden;
 
-const MobileMenu = () => {
+  span {
+    width: 100%;
+    height: 3px;
+    background-color: #000;
+    transform-origin: left;
+    transition: all 2s ease;
+  }
+`
+
+const MobileMenu = ({ menus }: Props) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
     <>
-      <div className="absolute top-10 right-10 hidden">
-        <button onClick={() => setIsOpen(isOpen => !isOpen)}>Menu</button>
+      <div className="absolute top-5 right-5 hidden">
+        <HamubergerMenu onClick={() => setIsOpen(isOpen => !isOpen)}>
+          <span className="line1"></span>
+          <span className="line2"></span>
+          <span className="line3"></span>
+        </HamubergerMenu>
       </div>
       <div
         className={cx(
@@ -69,7 +45,7 @@ const MobileMenu = () => {
           }
         )}
       >
-        {MENUS.map((menu, index) => (
+        {menus.map((menu, index) => (
           <div
             key={`menu-${menu.name}-${index}`}
             className="flex items-center gap-2"

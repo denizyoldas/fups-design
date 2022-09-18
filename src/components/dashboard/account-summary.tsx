@@ -44,8 +44,22 @@ const AccountSummary = () => {
     <>
       <div className="flex justify-between items-center mb-6">
         <Title>HESAP HAREKETLERİ</Title>
-        <a className="text-soft-blue text-sm font-semibold tracking-[0.2px]">
+        <a className="text-blue-400 text-sm font-semibold tracking-[0.2px] flex items-center justify-between">
           Harcama Analizi
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
         </a>
       </div>
       <div className="bg-white h-auto rounded-xl">
@@ -61,7 +75,7 @@ const AccountSummary = () => {
                 className={cx(
                   'bg-[#f0f0f5] text-[#909099] flex items-center justify-center w-8 h-8 rounded-md cursor-pointer',
                   {
-                    '!bg-soft-blue !text-white': active === i
+                    '!bg-blue-400 !text-white': active === i
                   }
                 )}
                 onClick={() => setActive(i)}

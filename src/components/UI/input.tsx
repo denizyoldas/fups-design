@@ -1,11 +1,11 @@
 import React, { InputHTMLAttributes, useState } from 'react'
 import cx from 'classnames'
+import EyeIcon from '@assets/icons/eye-icon.svg'
 
 export interface Props extends InputHTMLAttributes<HTMLInputElement> {
   className?: string
   inputClassName?: string
   label?: string
-  note?: string
   name: string
   error?: string
   type?: string
@@ -16,7 +16,7 @@ export interface Props extends InputHTMLAttributes<HTMLInputElement> {
 const classes = {
   root: 'px-4 h-14 flex items-center w-full rounded appearance-none transition duration-300 ease-in-out text-heading text-sm focus:outline-none focus:ring-0 hover:-ml-[2px] pt-2 pl-6',
   normal:
-    'bg-[#f5f5fa] !rounded-xl hover:border-2 border-secondary focus:border-soft-blue',
+    'bg-[#f5f5fa] !rounded-xl hover:border-2 border-secondary focus:border-blue-400',
   solid:
     'bg-gray-100 border border-border-100 focus:bg-light focus:border-accent',
   outline: 'border border-border-base focus:border-accent',
@@ -28,7 +28,6 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
       className,
       inputClassName,
       label,
-      note,
       name,
       error,
       type = 'text',
@@ -40,22 +39,15 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
   ) => {
     const [value, setValue] = useState('')
     const [focus, setFocus] = useState(false)
+    const [inputType, setInputType] = useState(type)
 
     return (
       <div className={cx('relative', className)}>
-        {/* {label && (
-          <label
-            htmlFor={name}
-            className="block text-sm font-semibold text-heading mb-2"
-          >
-            {label}
-          </label>
-        )} */}
         <input
           ref={ref}
           id={name}
           name={name}
-          type={type}
+          type={inputType}
           className={cx(
             classes.root,
             classes[variant],
@@ -64,9 +56,8 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
             error && 'border-2 border-danger'
           )}
           {...props}
-          value={value}
-          onChange={e => {
-            setValue(e.target.value)
+          onKeyUp={e => {
+            setValue(e.currentTarget.value)
           }}
           onFocus={() => {
             setFocus(true)
@@ -86,7 +77,17 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
             {label}
           </label>
         )}
-        {note && <p className="text-sm text-soft mt-2">{note}</p>}
+        {type === 'password' && (
+          <button
+            type="button"
+            className="absolute right-6 top-5"
+            onClick={() => {
+              setInputType(inputType === 'password' ? 'text' : 'password')
+            }}
+          >
+            <img src={EyeIcon} alt="inspect" />
+          </button>
+        )}
         {/* {error && <p className="text-sm text-error mt-2">{error}</p>} */}
       </div>
     )

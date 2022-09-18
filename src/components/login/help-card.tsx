@@ -27,7 +27,7 @@ const HelpCard = () => {
         </div>
       </div>
       <img
-        className="object-contain h-[400px]"
+        className="object-contain"
         src="/image-login-01-qr.webp"
         srcSet="/image-login-01-qr@2x.webp 2x, /image-login-01-qr@3x.webp 3x"
       />

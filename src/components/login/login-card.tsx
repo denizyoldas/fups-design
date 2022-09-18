@@ -1,7 +1,7 @@
 import { useAuthAtom } from '@/store/auth-atom'
 import axios from 'axios'
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import Button from '../UI/button'
 import Input from '../UI/input'
 import LoadingOverlay from '../UI/loading-overlay'
@@ -14,7 +14,7 @@ const OPTIONS = [
   },
   {
     label: 'Onaylı Hesap',
-    value: 'onayli'
+    value: 'Onaylı'
   },
   {
     label: 'Premium Hesap',
@@ -29,16 +29,19 @@ const LoginCard = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
+    control
   } = useForm()
 
   const submitHandler = async (values: any) => {
     const user = await getRandomUser()
     setIsLoading(false)
 
-    console.log(values)
-
-    // login({ ...values, name: `${user.name.first} ${user.name.last}` })
+    login({
+      ...values,
+      name: `${user.name.first} ${user.name.last}`,
+      type: values.type.value
+    })
   }
 
   // get random user data
@@ -63,26 +66,40 @@ const LoginCard = () => {
               Ad soyad ve şifren ile Fups hesabına giriş yapabilirsin.
             </span>
             <div className="grid grid-cols-1 gap-6 mt-8">
-              <Select
-                {...register('type')}
-                options={OPTIONS}
-                label="Hesap Tipi"
-                error={errors.type?.message as string}
+              <Controller
+                name="type"
+                control={control}
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    name="type"
+                    options={OPTIONS}
+                    label="Hesap Tipi"
+                    error={errors.type?.message as string}
+                  />
+                )}
               />
               <Input
-                {...register('username', { required: 'required' })}
+                {...register('username')}
                 error={errors.username?.message as string}
                 label="Kullanıcı Adı"
               />
               <Input
-                {...register('password', { required: 'required' })}
+                {...register('password')}
                 error={errors.password?.message as string}
                 label="Şifre"
+                type="password"
               />
             </div>
             <div className="flex items-center justify-between mt-6">
-              <a href="#">Şifremi unuttum</a>
-              <Button type="submit" className="py-5 px-12 !rounded-2xl">
+              <a href="#" className="text-blue-400 font-semibold">
+                Şifremi unuttum
+              </a>
+              <Button
+                type="submit"
+                className="py-5 px-12 !rounded-2xl"
+                disabled={isLoading}
+              >
                 GİRİŞ YAP
               </Button>
             </div>

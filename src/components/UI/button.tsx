@@ -3,9 +3,10 @@ import cx from 'classnames'
 
 interface Props {
   className?: string
-  variant?: 'primary' | 'outline' | 'tertiary'
+  variant?: 'primary' | 'outline' | 'tertiary' | 'danger'
   type?: 'button' | 'submit' | 'reset'
   children: React.ReactNode
+  disabled?: boolean
   onClick?: () => void
 }
 
@@ -14,6 +15,7 @@ const Button = ({
   variant = 'primary',
   type = 'button',
   children,
+  disabled,
   onClick
 }: Props) => {
   return (
@@ -22,13 +24,17 @@ const Button = ({
         'px-5 py-2 rounded-md text-sm font-semibold tracking-[1px]',
         {
           'border-2 border-secondary': variant === 'outline',
-          'bg-soft-blue text-white': variant === 'primary',
-          'bg-transparent text-primary': variant === 'tertiary'
+          'bg-blue-400 text-white active:bg-blue-200 hover:bg-blue-300':
+            variant === 'primary',
+          'bg-transparent text-primary': variant === 'tertiary',
+          'bg-danger text-white': variant === 'danger',
+          'cursor-not-allowed bg-[#e8e8f0]': disabled
         },
         className
       )}
       type={type}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>

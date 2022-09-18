@@ -11,7 +11,7 @@ const Info = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing eliti, donec
           rhoncus velit enim, ut malesuada erat dignissim sed.
         </p>
-        <a className="text-soft-blue tracking-[0.2px] font-semibold text-sm cursor-pointer">
+        <a className="text-blue-400 tracking-[0.2px] font-semibold text-sm cursor-pointer">
           Hemen Satın Al
         </a>
       </div>

@@ -13,7 +13,11 @@ module.exports = {
         dark: '#17171a',
         soft: '#dcdce6',
         danger: '#f20028',
-        'soft-blue': '#155ed4'
+        blue: {
+          200: '#6097f0',
+          300: '#4085e6',
+          400: '#155ed4'
+        }
       },
       mono: ['Sofia Pro', ...fontFamily.mono],
       sans: ['Sofia Pro', ...fontFamily.sans]

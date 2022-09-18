@@ -1,7 +1,7 @@
 import { IUser } from '@/types/user.model'
 import { atom, useAtom } from 'jotai'
 
-export const authAtom = atom<IUser | any>({})
+export const authAtom = atom<IUser | any>(null)
 
 export const useAuthAtom = () => {
   const [state, setState] = useAtom(authAtom)
@@ -16,6 +16,7 @@ export const useAuthAtom = () => {
     localStorage.setItem('auth', JSON.stringify(data))
   }
   const logout = () => {
+    localStorage.removeItem('auth')
     setState(null)
   }
 
@@ -23,5 +24,6 @@ export const useAuthAtom = () => {
 }
 
 export const isLoginAtom = atom(get => {
-  return get(authAtom) !== null
+  const user = get(authAtom)
+  return !!user
 })
