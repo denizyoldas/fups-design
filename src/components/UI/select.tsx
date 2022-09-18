@@ -1,5 +1,6 @@
-import React, { InputHTMLAttributes } from 'react'
+import React, { useEffect } from 'react'
 import ReactSelect, { components } from 'react-select'
+import cx from 'classnames'
 
 interface Props {
   className?: string
@@ -50,13 +51,7 @@ const customStyles = {
   })
 }
 
-const CustomOption = ({
-  innerProps,
-  isDisabled,
-  label,
-  isSelected,
-  ...pp
-}: any) =>
+const CustomOption = ({ innerProps, isDisabled, label, isSelected }: any) =>
   !isDisabled ? (
     <div
       {...innerProps}
@@ -73,9 +68,14 @@ const CustomOption = ({
 
 const Select = React.forwardRef<any, Props>(
   ({ className, label, name, error, options, ...props }, ref) => {
+    useEffect(() => {
+      console.log(error)
+    }, [error])
+
     return (
       <div className={className}>
         <ReactSelect
+          className={cx(error && 'border-2 !border-danger rounded-xl')}
           ref={ref}
           id={name}
           name={name}

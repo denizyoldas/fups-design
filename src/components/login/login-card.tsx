@@ -56,10 +56,10 @@ const LoginCard = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center w-full h-2/3">
-        <div className="w-full sm:w-[500px]">
+      <div className="flex flex-col items-center justify-center w-full h-3/4">
+        <div className="w-full sm:w-[432px]">
           <form onSubmit={handleSubmit(submitHandler)}>
-            <h1 className="font-semibold text-3xl tracking-[0.56px]">
+            <h1 className="font-semibold text-3xl tracking-[0.56px] mb-4">
               Kullanıcı Girişi
             </h1>
             <span className="text-accent">
@@ -69,23 +69,24 @@ const LoginCard = () => {
               <Controller
                 name="type"
                 control={control}
-                render={({ field }) => (
+                rules={{ required: 'Bu alan zorunludur!' }}
+                render={({ field, fieldState }) => (
                   <Select
                     {...field}
                     name="type"
                     options={OPTIONS}
                     label="Hesap Tipi"
-                    error={errors.type?.message as string}
+                    error={fieldState.error?.message as string}
                   />
                 )}
               />
               <Input
-                {...register('username')}
+                {...register('username', { required: 'Bu alan zorunludur!' })}
                 error={errors.username?.message as string}
                 label="Kullanıcı Adı"
               />
               <Input
-                {...register('password')}
+                {...register('password', { required: 'Bu alan zorunludur!' })}
                 error={errors.password?.message as string}
                 label="Şifre"
                 type="password"

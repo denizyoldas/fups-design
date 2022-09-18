@@ -16,7 +16,7 @@ export interface Props extends InputHTMLAttributes<HTMLInputElement> {
 const classes = {
   root: 'px-4 h-14 flex items-center w-full rounded appearance-none transition duration-300 ease-in-out text-heading text-sm focus:outline-none focus:ring-0 hover:-ml-[2px] pt-2 pl-6',
   normal:
-    'bg-[#f5f5fa] !rounded-xl hover:border-2 border-secondary focus:border-blue-400',
+    'bg-[#f5f5fa] !rounded-xl hover:border-2 border-secondary focus:border-blue-400 focus:border-2',
   solid:
     'bg-gray-100 border border-border-100 focus:bg-light focus:border-accent',
   outline: 'border border-border-base focus:border-accent',
@@ -53,7 +53,7 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
             classes[variant],
             shadow && classes.shadow,
             inputClassName,
-            error && 'border-2 border-danger'
+            error && 'border-2 !border-danger'
           )}
           {...props}
           onKeyUp={e => {

@@ -23,7 +23,8 @@ const Button = ({
       className={cx(
         'px-5 py-2 rounded-md text-sm font-semibold tracking-[1px]',
         {
-          'border-2 border-secondary': variant === 'outline',
+          'border-2 border-secondary py-5 px-6 !rounded-xl':
+            variant === 'outline',
           'bg-blue-400 text-white active:bg-blue-200 hover:bg-blue-300':
             variant === 'primary',
           'bg-transparent text-primary': variant === 'tertiary',
